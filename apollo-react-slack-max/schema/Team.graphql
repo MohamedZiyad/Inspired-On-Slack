@@ -1,0 +1,14 @@
+type Team {
+  owner: User!
+  members: [User!]!
+  channel: [Channel!]!
+}
+
+type CreateTeamResponse {
+  ok: Boolean!
+  errors: [Error!]
+}
+
+type Mutation {
+  createTeam(name: String!): CreateTeamResponse!
+}

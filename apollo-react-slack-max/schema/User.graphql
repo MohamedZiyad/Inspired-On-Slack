@@ -1,0 +1,40 @@
+type User {
+  id: Int!
+  username: String!
+  email: String!
+  messages: Message!
+  teams: [Team!]!
+}
+
+# CRUD
+# C-create
+# R-read
+# U-update
+# D-delete
+
+type Query {
+  getUser(id: Int!): User!
+  allUsers: [User!]!
+}
+
+type RegisterResponse {
+  ok: Boolean! # status of the respond
+  user: User # if the ok true no errors user will be resolved
+  errors: [Error!] # if the ok false errors the the errors will be resolved via validation
+}
+
+type LoginResponse {
+  ok: Boolean!
+  token: String
+  refreshToken: String
+  errors: [Error!]
+}
+
+type Mutation {
+  register(
+    username: String!
+    email: String!
+    password: String!
+  ): RegisterResponse! # checking errors
+  login(email: String!, password: String!): LoginResponse!
+}

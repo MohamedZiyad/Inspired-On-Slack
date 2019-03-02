@@ -1,0 +1,4 @@
+type Error {
+  path: String! # what kind of error
+  message: String # error message
+}
